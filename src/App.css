@@ -1,38 +1,172 @@
-.App {
-  text-align: center;
+/* =========================
+   CSS VARIABLES (Theme)
+========================= */
+
+:root {
+
+  /* Backgrounds */
+  --bg-main: #e5ded6;
+  --bg-card: #f6efe6;
+
+  /* Text */
+  --text-primary: #2d2d2d;
+  --text-secondary: #666666;
+
+  /* Accent colors */
+  --accent-pink: #e86ba3;
+  --accent-purple: #8a6be8;
+
+  /* Borders */
+  --border-color: #e3ddd5;
+
+  /* Focus */
+  --focus-color: #e86ba3;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 10px rgba(0,0,0,0.05);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+  /* Font */
+  --font-main: system-ui, -apple-system, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--bg-main);
+  color: var(--text-primary);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* =========================
+   FORM CONTAINER
+========================= */
+
+.form-container {
+  max-width: 720px;
+  margin: 40px auto;
+  background: var(--bg-card);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* =========================
+   SECTION TITLES
+========================= */
+
+h2 {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+/* =========================
+   FORM FIELD
+========================= */
+
+.form-field {
+  margin-bottom: var(--space-md);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+  background: white;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+/* Focus state */
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 2px rgba(232,107,163,0.15);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+  background: linear-gradient(
+    135deg,
+    var(--accent-pink),
+    var(--accent-purple)
+  );
+
+  border: none;
   color: white;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: var(--space-md);
+  transition: opacity 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  opacity: 0.9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* =========================
+   ERROR TEXT
+========================= */
+
+.error-text {
+  color: #d04646;
+  font-size: 12px;
+  margin-top: var(--space-xs);
+}
+
+/* =========================
+   TABLE (for travel table later)
+========================= */
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-md);
+}
+
+.form-table th,
+.form-table td {
+  border: 1px solid var(--border-color);
+  padding: var(--space-sm);
+}
+
+.form-table th {
+  background: #f3eee8;
+  text-align: left;
 }
