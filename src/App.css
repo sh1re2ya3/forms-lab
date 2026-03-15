@@ -170,3 +170,99 @@ button:hover {
   background: #f3eee8;
   text-align: left;
 }
+
+
+/* =========================
+   TOGGLE GROUP
+========================= */
+
+/* =========================
+   TOGGLE GROUP
+========================= */
+
+.toggle-group {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.toggle-option {
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+/* hide radio button */
+
+.toggle-option input {
+  display: none;
+}
+
+/* hover */
+
+.toggle-option:hover {
+  background: rgba(232,107,163,0.08);
+}
+
+/* active */
+
+.toggle-option.active {
+  background: linear-gradient(
+    135deg,
+    var(--accent-pink),
+    var(--accent-purple)
+  );
+  color: white;
+}
+
+.bucket-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.bucket-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bucket-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: linear-gradient(
+    135deg,
+    var(--accent-pink),
+    var(--accent-purple)
+  );
+
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.bucket-chip button {
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+
+.form-table input {
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.form-table input:focus {
+  background: white;
+}

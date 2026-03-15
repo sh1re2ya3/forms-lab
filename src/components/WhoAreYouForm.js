@@ -3,6 +3,8 @@ import LocationSection from "./LocationSection";
 import PersonalitySection from "./PersonalitySection";
 import InterestsSection from "./InterestsSection";
 import LifestyleSection from "./LifestyleSection";
+import BucketListSection from "./BucketListSection";
+import TravelTableSection from "./TravelTableSection";
 
 function WhoAreYouForm({ values, errors, handleChange, handleSubmit }) {
   return (
@@ -51,6 +53,19 @@ function WhoAreYouForm({ values, errors, handleChange, handleSubmit }) {
           handleChange={(name, value) =>
             handleChange("lifestyle." + name, value)
           }
+        />
+
+        <h2>Bucket List</h2>
+        <BucketListSection
+          values={values.bucketList}
+          handleChange={(name, value) => handleChange(name, value)}
+        />
+
+        <h2>Places you've traveled</h2>
+
+        <TravelTableSection
+          values={values.travels}
+          handleChange={(name, value) => handleChange(name, value)}
         />
 
         <button type="submit">Submit</button>

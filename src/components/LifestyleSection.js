@@ -3,7 +3,7 @@ function LifestyleSection({ values, errors, handleChange }) {
     <div>
 
       <div className="form-field">
-        <label>How many hobbies do you have?</label>
+        <label>How many vehicles do you have?</label>
 
         <input
           type="number"

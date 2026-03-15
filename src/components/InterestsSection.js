@@ -24,7 +24,7 @@ function InterestsSection({ values, errors, handleChange }) {
         <label>Things you enjoy</label>
 
         <select
-          multiple
+          multiple={true}
           name="thingsYouEnjoy"
           value={values.thingsYouEnjoy}
           onChange={(e) =>

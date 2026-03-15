@@ -5,44 +5,43 @@ export const formData = {
     email: "",
     password: "",
     birthDate: "",
-    bio: ""
+    bio: "",
   },
 
   location: {
     country: "",
-    city: ""
+    city: "",
   },
 
   personality: {
     earlyBirdOrNightOwl: "",
-    petPreference: ""
+    petPreference: "",
   },
 
   interests: {
     thingsYouEnjoy: [],
     weekendActivities: [],
-    favoriteFoods: []
+    favoriteFoods: [],
+    favoriteCharacterImage: null,
   },
 
   lifestyle: {
     shoesCount: 0,
     moodLevel: 50,
-    favoriteColor: "#000000"
+    favoriteColor: "#000000",
   },
 
   media: {
-    profilePhoto: null
+    profilePhoto: null,
   },
 
-  futurePlans: {
-    bucketList: [{ item: "" }],
-  },
+  bucketList: [],
 
-  memories: {
-    travels: [ {
+  travels: [
+    {
       place: "",
       year: "",
-      memory: ""
-    }]
-  }
-}
+      memory: "",
+    },
+  ],
+};
