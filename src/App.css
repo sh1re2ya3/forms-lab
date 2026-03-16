@@ -266,3 +266,37 @@ button:hover {
 .form-table input:focus {
   background: white;
 }
+
+.file-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.drawing-area {
+  margin-top: 10px;
+}
+
+.drawing-canvas {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: white;
+  cursor: crosshair;
+}
+
+.drawing-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.secondary-btn {
+  background: #eee;
+  color: #444;
+}
+
+.drawing-feedback {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--accent-purple);
+}
