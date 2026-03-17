@@ -5,22 +5,22 @@
 :root {
 
   /* Backgrounds */
-  --bg-main: #e5ded6;
-  --bg-card: #f6efe6;
+  --bg-main: #F7EDE1;
+  --bg-card: #E7D8D8;
 
   /* Text */
-  --text-primary: #2d2d2d;
-  --text-secondary: #666666;
+  --text-primary: #333333;
+  --text-secondary: #726B6B;
 
   /* Accent colors */
-  --accent-pink: #e86ba3;
-  --accent-purple: #8a6be8;
+  --accent-primary: #5D487E;
+  --accent-light: #C7B8DF;
 
   /* Borders */
-  --border-color: #e3ddd5;
+  --border-color: #DADADADA;
 
   /* Focus */
-  --focus-color: #e86ba3;
+  --focus-color: #5D487E;
 
   /* Radius */
   --radius-sm: 6px;
@@ -43,11 +43,59 @@
    GLOBAL
 ========================= */
 
+html,
 body {
+  height: 100vh;
   margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
   font-family: var(--font-main);
   background: var(--bg-main);
   color: var(--text-primary);
+}
+
+/* =========================
+   APP WRAPPER
+========================= */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* =========================
+   APP HEADING
+========================= */
+
+h1 {
+  color: var(--accent-primary);
+  font-size: 36px;
+  margin: 15px 0 15px 0;
+  font-weight: 600;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* =========================
+   FORM WRAPPER
+========================= */
+
+.form-wrapper {
+  width: 80%;
+  max-width: 1400px;
+  padding: 0 var(--space-lg);
+  margin-bottom: 30px;
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* =========================
@@ -55,12 +103,67 @@ body {
 ========================= */
 
 .form-container {
-  max-width: 720px;
-  margin: 40px auto;
+  width: 100%;
+  height: 100%;
   background: var(--bg-card);
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 2px solid var(--border-color);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-light) var(--bg-main);
+  box-sizing: border-box;
+}
+
+/* Webkit browsers (Chrome, Safari, etc.) */
+.form-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background: var(--accent-light);
+  border-radius: 4px;
+}
+
+.form-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+.form-container form {
+  display: block;
+}
+
+/* =========================
+   FORM ROWS & COLUMNS
+========================= */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.form-row-full {
+  grid-template-columns: 1fr;
+}
+
+.form-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.form-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
 /* =========================
@@ -68,9 +171,30 @@ body {
 ========================= */
 
 h2 {
-  margin-top: var(--space-lg);
+  margin-top: 0;
   margin-bottom: var(--space-sm);
-  color: var(--text-primary);
+  color: var(--accent-primary);
+  border-bottom: 2px solid var(--accent-light);
+  padding-bottom: 8px;
+  font-size: 18px;
+}
+
+.form-container form > button {
+  width: 100%;
+  margin-top: var(--space-lg);
+}
+
+/* =========================
+   FORM SECTION
+========================= */
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section h2 {
+  margin-bottom: var(--space-md);
 }
 
 /* =========================
@@ -103,6 +227,7 @@ textarea {
   background: white;
   color: var(--text-primary);
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 /* Focus state */
@@ -112,7 +237,7 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--focus-color);
-  box-shadow: 0 0 0 2px rgba(232,107,163,0.15);
+  box-shadow: 0 0 0 2px rgba(93,72,126,0.15);
 }
 
 /* =========================
@@ -120,12 +245,7 @@ textarea:focus {
 ========================= */
 
 button {
-  background: linear-gradient(
-    135deg,
-    var(--accent-pink),
-    var(--accent-purple)
-  );
-
+  background: var(--accent-primary);
   border: none;
   color: white;
   padding: 10px 16px;
@@ -137,7 +257,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 /* =========================
@@ -167,8 +287,9 @@ button:hover {
 }
 
 .form-table th {
-  background: #f3eee8;
+  background: var(--accent-light);
   text-align: left;
+  color: var(--accent-primary);
 }
 
 
@@ -205,17 +326,13 @@ button:hover {
 /* hover */
 
 .toggle-option:hover {
-  background: rgba(232,107,163,0.08);
+  background: rgba(93, 72, 126, 0.08);
 }
 
 /* active */
 
 .toggle-option.active {
-  background: linear-gradient(
-    135deg,
-    var(--accent-pink),
-    var(--accent-purple)
-  );
+  background: var(--accent-primary);
   color: white;
 }
 
@@ -235,13 +352,7 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 6px;
-
-  background: linear-gradient(
-    135deg,
-    var(--accent-pink),
-    var(--accent-purple)
-  );
-
+  background: var(--accent-primary);
   color: white;
   padding: 6px 10px;
   border-radius: 20px;
@@ -291,8 +402,8 @@ button:hover {
 }
 
 .secondary-btn {
-  background: #eee;
-  color: #444;
+  background: var(--accent-light);
+  color: var(--accent-primary);
 }
 
 .drawing-feedback {
