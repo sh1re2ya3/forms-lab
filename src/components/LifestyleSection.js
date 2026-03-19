@@ -1,3 +1,5 @@
+import MoodFace from "./MoodFace";
+
 function LifestyleSection({ values, errors, handleChange }) {
   return (
     <div>
@@ -20,16 +22,19 @@ function LifestyleSection({ values, errors, handleChange }) {
       <div className="form-field">
         <label>How is your day going?</label>
 
-        <input
-          type="range"
-          name="moodLevel"
-          min="0"
-          max="100"
-          value={values.moodLevel}
-          onChange={(e) =>
-            handleChange(e.target.name, Number(e.target.value))
-          }
-        />
+        <div className="mood-slider-container">
+          <input
+            type="range"
+            name="moodLevel"
+            min="0"
+            max="100"
+            value={values.moodLevel}
+            onChange={(e) =>
+              handleChange(e.target.name, Number(e.target.value))
+            }
+          />
+          <MoodFace moodLevel={values.moodLevel} />
+        </div>
 
       </div>
 

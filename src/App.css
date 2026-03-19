@@ -3,31 +3,31 @@
 ========================= */
 
 :root {
-
   /* Backgrounds */
-  --bg-main: #F7EDE1;
-  --bg-card: #E7D8D8;
+  --bg-main: linear-gradient(135deg, #f6eee9, #efe3f7);
+  --bg-card: rgba(255, 255, 255, 0.35);
 
   /* Text */
-  --text-primary: #333333;
-  --text-secondary: #726B6B;
+  --text-primary: #2d2433;
+  --text-secondary: #7a6f80;
 
   /* Accent colors */
-  --accent-primary: #5D487E;
-  --accent-light: #C7B8DF;
+  --accent-primary: #7c5cc4;
+  --accent-secondary: #e07a5f;
+  --accent-light: rgba(124, 92, 196, 0.18);
 
   /* Borders */
-  --border-color: #DADADADA;
+  --border-color: rgba(255, 255, 255, 0.4);
 
   /* Focus */
-  --focus-color: #5D487E;
+  --focus-color: #7c5cc4;
 
   /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
 
   /* Shadows */
-  --shadow-soft: 0 4px 10px rgba(0,0,0,0.05);
+  --shadow-soft: 0 8px 30px rgba(124, 92, 196, 0.12);
 
   /* Spacing */
   --space-xs: 4px;
@@ -36,7 +36,7 @@
   --space-lg: 24px;
 
   /* Font */
-  --font-main: system-ui, -apple-system, sans-serif;
+  --font-main: "Inter", system-ui, sans-serif;
 }
 
 /* =========================
@@ -55,6 +55,33 @@ body {
   font-family: var(--font-main);
   background: var(--bg-main);
   color: var(--text-primary);
+  position: relative;
+}
+
+/* Background glow blobs */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+body::before {
+  background: var(--accent-secondary);
+  top: 5%;
+  left: 10%;
+  opacity: 0.7;
+}
+
+body::after {
+  background: var(--accent-primary);
+  bottom: 3%;
+  right: 13%;
+  opacity: 0.7;
 }
 
 /* =========================
@@ -68,6 +95,8 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================
@@ -77,7 +106,7 @@ body {
 h1 {
   color: var(--accent-primary);
   font-size: 36px;
-  margin: 15px 0 15px 0;
+  margin: 15px 0;
   font-weight: 600;
   text-align: center;
   flex-shrink: 0;
@@ -88,7 +117,7 @@ h1 {
 ========================= */
 
 .form-wrapper {
-  width: 80%;
+  width: 50%;
   max-width: 1400px;
   padding: 0 var(--space-lg);
   margin-bottom: 30px;
@@ -99,31 +128,31 @@ h1 {
 }
 
 /* =========================
-   FORM CONTAINER
+   FORM CONTAINER (GLASS)
 ========================= */
 
 .form-container {
   width: 100%;
-  height: 100%;
+
   background: var(--bg-card);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-color);
+
   overflow-y: auto;
   overflow-x: hidden;
-  border: 2px solid var(--border-color);
+
   scrollbar-width: thin;
-  scrollbar-color: var(--accent-light) var(--bg-main);
-  box-sizing: border-box;
+  scrollbar-color: var(--accent-light) transparent;
 }
 
-/* Webkit browsers (Chrome, Safari, etc.) */
+/* Scrollbar */
 .form-container::-webkit-scrollbar {
   width: 8px;
-}
-
-.form-container::-webkit-scrollbar-track {
-  background: var(--bg-main);
 }
 
 .form-container::-webkit-scrollbar-thumb {
@@ -133,10 +162,6 @@ h1 {
 
 .form-container::-webkit-scrollbar-thumb:hover {
   background: var(--accent-primary);
-}
-
-.form-container form {
-  display: block;
 }
 
 /* =========================
@@ -154,12 +179,7 @@ h1 {
   grid-template-columns: 1fr;
 }
 
-.form-col-left {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
+.form-col-left,
 .form-col-right {
   display: flex;
   flex-direction: column;
@@ -173,29 +193,24 @@ h1 {
 h2 {
   margin-top: 0;
   margin-bottom: var(--space-sm);
-  color: var(--accent-primary);
-  border-bottom: 2px solid var(--accent-light);
-  padding-bottom: 8px;
+  /* color: var(--accent-primary); */
   font-size: 18px;
+  position: relative;
+
+  background-image: linear-gradient(75deg, #7c5cc4, #c13915);
+  color: transparent;
+  background-clip: text;
 }
 
-.form-container form > button {
-  width: 100%;
-  margin-top: var(--space-lg);
-}
-
-/* =========================
-   FORM SECTION
-========================= */
-
-.form-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-section h2 {
-  margin-bottom: var(--space-md);
-}
+/* h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin-top: 6px;
+  background: linear-gradient(90deg, #7c5cc4, #e07a5f);
+  border-radius: 2px;
+} */
 
 /* =========================
    FORM FIELD
@@ -213,7 +228,7 @@ label {
 }
 
 /* =========================
-   INPUTS
+   INPUTS (GLASS STYLE)
 ========================= */
 
 input,
@@ -222,22 +237,30 @@ textarea {
   width: 100%;
   padding: 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+
   font-size: 14px;
-  background: white;
   color: var(--text-primary);
+
   transition: all 0.2s ease;
   box-sizing: border-box;
 }
 
-/* Focus state */
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--accent-primary);
+}
 
 input:focus,
 select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--focus-color);
-  box-shadow: 0 0 0 2px rgba(93,72,126,0.15);
+  box-shadow: 0 0 0 2px rgba(124, 92, 196, 0.2);
 }
 
 /* =========================
@@ -245,57 +268,93 @@ textarea:focus {
 ========================= */
 
 button {
-  background: var(--accent-primary);
+  background: linear-gradient(135deg, #7c5cc4, #e07a5f);
   border: none;
   color: white;
+
   padding: 10px 16px;
   border-radius: var(--radius-sm);
   cursor: pointer;
+
   font-weight: 500;
-  margin-top: var(--space-md);
-  transition: opacity 0.2s ease;
+  letter-spacing: 0.3px;
+
+  box-shadow: 0 6px 20px rgba(124, 92, 196, 0.25);
+
+  transition: all 0.25s ease;
 }
 
 button:hover {
-  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(124, 92, 196, 0.35);
 }
 
 /* =========================
-   ERROR TEXT
+   RANGE SLIDER
 ========================= */
 
-.error-text {
-  color: #d04646;
-  font-size: 12px;
-  margin-top: var(--space-xs);
+input[type="range"] {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--accent-light),
+    var(--accent-primary)
+  );
+  border: none;
 }
 
 /* =========================
-   TABLE (for travel table later)
+   CHECKBOX & RADIO
+========================= */
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent-primary);
+  cursor: pointer;
+}
+
+/* =========================
+   FILE INPUT
+========================= */
+
+input[type="file"] {
+  border: 2px dashed var(--accent-primary);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================
+   MOOD FACE
+========================= */
+
+.mood-face svg {
+  filter: drop-shadow(0 4px 10px rgba(124, 92, 196, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.mood-face svg:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   TABLE
 ========================= */
 
 .form-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: var(--space-md);
 }
 
 .form-table th,
 .form-table td {
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: var(--space-sm);
 }
 
 .form-table th {
-  background: var(--accent-light);
-  text-align: left;
+  background: rgba(124, 92, 196, 0.15);
   color: var(--accent-primary);
 }
-
-
-/* =========================
-   TOGGLE GROUP
-========================= */
 
 /* =========================
    TOGGLE GROUP
@@ -303,111 +362,37 @@ button:hover {
 
 .toggle-group {
   display: flex;
-  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .toggle-option {
   padding: 8px 14px;
   cursor: pointer;
   color: var(--text-secondary);
-  transition: all 0.2s ease;
-  user-select: none;
 }
-
-/* hide radio button */
-
-.toggle-option input {
-  display: none;
-}
-
-/* hover */
-
-.toggle-option:hover {
-  background: rgba(93, 72, 126, 0.08);
-}
-
-/* active */
 
 .toggle-option.active {
-  background: var(--accent-primary);
+  background: linear-gradient(135deg, #7c5cc4, #e07a5f);
   color: white;
 }
 
-.bucket-input-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.bucket-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+/* =========================
+   BUCKET CHIPS
+========================= */
 
 .bucket-chip {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: var(--accent-primary);
-  color: white;
+
+  background: rgba(124, 92, 196, 0.2);
+  color: var(--accent-primary);
+
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 13px;
-}
 
-.bucket-chip button {
-  border: none;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-
-.form-table input {
-  width: 100%;
-  border: none;
-  background: transparent;
-}
-
-.form-table input:focus {
-  background: white;
-}
-
-.file-actions {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.drawing-area {
-  margin-top: 10px;
-}
-
-.drawing-canvas {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  background: white;
-  cursor: crosshair;
-}
-
-.drawing-controls {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.secondary-btn {
-  background: var(--accent-light);
-  color: var(--accent-primary);
-}
-
-.drawing-feedback {
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--accent-purple);
+  backdrop-filter: blur(6px);
 }
